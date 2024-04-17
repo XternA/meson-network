@@ -14,6 +14,8 @@ if [ -d ./$APP_NAME* ]; then
     cd ./$APP_NAME* || exit 1
 
     sudo ./service start $APP_NAME
+    echo "Set Cache Size:  $CACHE_SIZE" GB
+    echo "Set Port:        $PORT"
     sudo ./service status $APP_NAME
 else
     CPU_ARCH=$(uname -m)
@@ -47,8 +49,8 @@ else
     # Set default values if variables are not provided
     : ${CACHE_SIZE:=20}   # Default cache size 20G
     : ${PORT:=443}        # Default port is 443
-    echo "Current Cache Size:  $CACHE_SIZE"
-    echo "Current Port:        $PORT"
+    echo "Set Cache Size:  $CACHE_SIZE" GB
+    echo "Set Port:        $PORT"
 
     sudo ./$APP_NAME config set --token=$TOKEN --https_port=$PORT --cache.size=$CACHE_SIZE
     sudo ./service start $APP_NAME
