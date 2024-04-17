@@ -14,7 +14,7 @@ if [ -d ./$APP_NAME* ]; then
     cd ./$APP_NAME* || exit 1
 
     sudo ./service start $APP_NAME
-    sudo ./service status meson_cdn
+    sudo ./service status $APP_NAME
 else
     CPU_ARCH=$(uname -m)
     LINK="https://staticassets.meson.network/public/meson_cdn/v3.1.20"
