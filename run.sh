@@ -48,9 +48,9 @@ else
     : ${CACHE_SIZE:=20}   # Default cache size 20G
     : ${PORT:=443}        # Default port is 443
     echo "Current Cache Size:  $CACHE_SIZE"
-    echo "Current Port:        $CACHE_SIZE"
+    echo "Current Port:        $PORT"
 
     sudo ./$APP_NAME config set --token=$TOKEN --https_port=$PORT --cache.size=$CACHE_SIZE
     sudo ./service start $APP_NAME
-    sudo ./service status meson_cdn
+    sudo ./service status $APP_NAME
 fi
