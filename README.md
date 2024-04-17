@@ -36,7 +36,7 @@ docker compose up -d
 ```sh
 docker run -d --restart unless-stopped --name meson-node -e TOKEN=<YOUR_TOKEN> -e PORT=443 -e CACHE_SIZE=30 xterna/meson-network
 ```
-This will start the application in the background. The alias assigned is `gaga-node`.
+This will start the application in the background. The alias assigned is `meson-node`.
 
 ## Like my work?
 Donations are warmly welcomed no matter how small and thank you very much. 😌
