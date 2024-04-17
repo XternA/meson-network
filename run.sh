@@ -14,6 +14,7 @@ if [ -d ./$APP_NAME* ]; then
     cd ./$APP_NAME* || exit 1
 
     sudo ./service start $APP_NAME
+    sudo ./service status meson_cdn
 else
     CPU_ARCH=$(uname -m)
     LINK="https://staticassets.meson.network/public/meson_cdn/v3.1.20"
@@ -42,6 +43,14 @@ else
     cd ./$APP_NAME* || exit 1
 
     sudo ./service install $APP_NAME
+
+    # Set default values if variables are not provided
+    : ${CACHE_SIZE:=20}   # Default cache size 20G
+    : ${PORT:=443}        # Default port is 443
+    echo "Current Cache Size:  $CACHE_SIZE"
+    echo "Current Port:        $CACHE_SIZE"
+
     sudo ./$APP_NAME config set --token=$TOKEN --https_port=$PORT --cache.size=$CACHE_SIZE
     sudo ./service start $APP_NAME
+    sudo ./service status meson_cdn
 fi
